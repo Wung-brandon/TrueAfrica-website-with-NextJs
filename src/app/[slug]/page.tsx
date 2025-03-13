@@ -1,40 +1,36 @@
 import React from 'react';
-// import { Metadata } from 'next';
 import Layout from '@/components/Layout';
 import NextPrevNavigation from '@/components/NextPrevNavigation';
-import { getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
+import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
-// Import Next.js types
-// import type { PageProps } from 'next';
 
-// export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-//   const topic = getTopicBySlug(params.slug);
+// Generate metadata function with correct typing
+export async function generateMetadata({ 
+  params 
+}: {params: Promise<{ slug: string }>}) {
+  const slug = (await params).slug
+  const topic = getTopicBySlug(slug);
+  if (!topic) {
+    return { title: 'Topic Not Found', description: 'The requested topic could not be found.' };
+  }
+  return { title: topic.title, description: topic.shortDescription };
+}
 
-//   if (!topic) {
-//     return {
-//       title: 'Topic Not Found',
-//       description: 'The requested topic could not be found.',
-//     };
-//   }
+// Generate static paths with correct return type
+export function generateStaticParams(): { slug: string }[] {
+  return topics.map(topic => ({ 
+    slug: topic.slug 
+  }));
+}
 
-//   return {
-//     title: topic.title,
-//     description: topic.shortDescription,
-//   };
-// }
-
-// // Generate static params
-// export function generateStaticParams() {
-//   return topics.map(topic => ({
-//     slug: topic.slug,
-//   }));
-// }
-
-// Fix the type issue by ensuring params are passed correctly
-export default function TopicPage({ params }: { params: { slug: string } }) {
-  const topic = getTopicBySlug(params.slug);
+// Main page component with correct params typing
+export default async function TopicPage({ 
+  params 
+}: {params: Promise<{ slug: string }>}) {
+  const slug = (await params).slug
+  const topic = getTopicBySlug(slug);
 
   if (!topic) {
     notFound();

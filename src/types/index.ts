@@ -5,6 +5,7 @@ export interface Topic {
     category: 'known' | 'hidden';
     shortDescription: string;
     fullDescription: string;
-    imageUrl: string | unknown;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    imageUrl: string | any;
     slug: string;
   }

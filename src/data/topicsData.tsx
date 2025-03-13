@@ -262,9 +262,10 @@ export const topics: Topic[] = [
 ];
 
 // Helper function to get topic by slug
-export const getTopicBySlug = (slug: string): Topic | undefined => {
-  return topics.find(topic => topic.slug === slug);
+export const getTopicBySlug = (slug: string): Topic | null => {
+  return topics.find(topic => topic.slug === slug) || null;
 };
+
 
 // Helper function to get next and previous topics
 export const getNextPrevTopics = (currentId: number) => {
