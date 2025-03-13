@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           Beyond the stereotypes lies a continent of immense potential and opportunity. 
-          Discover Africa's known strengths and hidden treasures.
+          Discover Africa&apos;s known strengths and hidden treasures.
         </motion.p>
         
         <motion.div

@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           <div className="mb-8 md:mb-0">
             <span className="text-2xl font-bold">True<span className="text-amber-400">Africa</span></span>
             <p className="mt-2 text-gray-400 max-w-md">
-              Uncovering Africa's known strengths and hidden potential, beyond the stereotypes and misconceptions.
+              Uncovering Africa&apos;s known strengths and hidden potential, beyond the stereotypes and misconceptions.
             </p>
           </div>
           
