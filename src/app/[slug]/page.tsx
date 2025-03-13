@@ -6,8 +6,13 @@ import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
 // Generate metadata for the page
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export function generateMetadata({ params }: Props): Metadata {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
@@ -31,7 +36,7 @@ export function generateStaticParams() {
 }
 
 // Server Component (default export)
-export default async function TopicPage({ params }: { params: { slug: string } }) {
+export default async function TopicPage({ params }: Props) {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
