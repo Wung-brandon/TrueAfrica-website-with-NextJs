@@ -1,4 +1,3 @@
-// src/app/[slug]/page.tsx
 import React from 'react';
 import { Metadata } from 'next';
 import Layout from '@/components/Layout';
@@ -8,16 +7,16 @@ import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const topic = getTopicBySlug(params.slug);
-  
+
   if (!topic) {
     return {
       title: 'Topic Not Found',
-      description: 'The requested topic could not be found.'
+      description: 'The requested topic could not be found.',
     };
   }
-  
+
   return {
     title: topic.title,
     description: topic.shortDescription,
@@ -25,23 +24,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Generate static params for all topics
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return topics.map(topic => ({
-    slug: topic.slug
+    slug: topic.slug,
   }));
 }
-
 
 // Server Component (default export)
 export default function TopicPage({ params }: { params: { slug: string } }) {
   const topic = getTopicBySlug(params.slug);
-  
+
   if (!topic) {
     notFound();
+    return null;
   }
-  
+
   const { prevTopic, nextTopic } = getNextPrevTopics(topic.id);
-  
+
   return (
     <Layout>
       <AnimatedContent topic={topic} />
