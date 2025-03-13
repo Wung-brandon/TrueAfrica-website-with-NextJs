@@ -6,13 +6,10 @@ import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
-interface PageProps {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+// Import Next.js types
+// import type { PageProps } from 'next';
 
-// Generate metadata for the page
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
@@ -28,15 +25,15 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-// Generate static params for all topics
+// Generate static params
 export function generateStaticParams() {
   return topics.map(topic => ({
     slug: topic.slug,
   }));
 }
 
-// Server Component (default export)
-export default function TopicPage({ params }: PageProps) {
+// Fix the type issue by ensuring params are passed correctly
+export default function TopicPage({ params }: { params: { slug: string } }) {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
