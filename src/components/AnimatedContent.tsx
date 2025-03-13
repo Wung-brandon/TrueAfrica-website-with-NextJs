@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // Client Component for animations
 'use client';
 import { Topic } from "@/types";
@@ -83,7 +84,7 @@ function AnimatedContent({ topic }: { topic: Topic }) {
                 {topic.fullDescription}
               </p>
               
-              <div className="mt-8 p-4 md:p-6 bg-gray-50 rounded-lg border border-gray-200">
+              {/* <div className="mt-8 p-4 md:p-6 bg-gray-50 rounded-lg border border-gray-200">
                 <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">Key Insights</h3>
                 <ul className="space-y-3">
                   {topic.category === 'known' ? (
@@ -118,7 +119,7 @@ function AnimatedContent({ topic }: { topic: Topic }) {
                     </>
                   )}
                 </ul>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>
