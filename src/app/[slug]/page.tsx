@@ -34,12 +34,12 @@ export function generateStaticParams() {
   }));
 }
 
-interface PageParams {
-  slug: string
-}
-
 // Server Component (default export)
-const TopicPage = async ({ params }: { params: PageParams }) => {
+export default async function TopicPage(props: {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const { params } = props;
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
@@ -54,6 +54,4 @@ const TopicPage = async ({ params }: { params: PageParams }) => {
       <NextPrevNavigation prevTopic={prevTopic} nextTopic={nextTopic} />
     </Layout>
   );
-};
-
-export default TopicPage;
+}
