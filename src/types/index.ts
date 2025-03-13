@@ -5,6 +5,6 @@ export interface Topic {
     category: 'known' | 'hidden';
     shortDescription: string;
     fullDescription: string;
-    imageUrl: string | any;
+    imageUrl: string | unknown;
     slug: string;
   }
