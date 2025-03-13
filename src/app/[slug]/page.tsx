@@ -6,12 +6,13 @@ import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
+interface PageProps {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
 // Generate metadata for the page
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: { slug: string } 
-}): Promise<Metadata> {
+export function generateMetadata({ params }: PageProps): Metadata {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
@@ -35,15 +36,12 @@ export function generateStaticParams() {
 }
 
 // Server Component (default export)
-export default async function TopicPage(props: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const { params } = props;
+export default function TopicPage({ params }: PageProps) {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
     notFound();
+    return null;
   }
 
   const { prevTopic, nextTopic } = getNextPrevTopics(topic.id);
