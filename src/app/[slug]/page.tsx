@@ -31,7 +31,7 @@ export function generateStaticParams() {
 }
 
 // Server Component (default export)
-export default function TopicPage({ params }: { params: { slug: string } }) {
+export async function TopicPage({ params }: { params: { slug: string } }) {
   const topic = getTopicBySlug(params.slug);
 
   if (!topic) {
