@@ -1,36 +1,36 @@
 import React from 'react';
-import { Metadata } from 'next';
+// import { Metadata } from 'next';
 import Layout from '@/components/Layout';
 import NextPrevNavigation from '@/components/NextPrevNavigation';
-import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
+import { getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
 // Import Next.js types
 // import type { PageProps } from 'next';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const topic = getTopicBySlug(params.slug);
+// export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+//   const topic = getTopicBySlug(params.slug);
 
-  if (!topic) {
-    return {
-      title: 'Topic Not Found',
-      description: 'The requested topic could not be found.',
-    };
-  }
+//   if (!topic) {
+//     return {
+//       title: 'Topic Not Found',
+//       description: 'The requested topic could not be found.',
+//     };
+//   }
 
-  return {
-    title: topic.title,
-    description: topic.shortDescription,
-  };
-}
+//   return {
+//     title: topic.title,
+//     description: topic.shortDescription,
+//   };
+// }
 
-// Generate static params
-export function generateStaticParams() {
-  return topics.map(topic => ({
-    slug: topic.slug,
-  }));
-}
+// // Generate static params
+// export function generateStaticParams() {
+//   return topics.map(topic => ({
+//     slug: topic.slug,
+//   }));
+// }
 
 // Fix the type issue by ensuring params are passed correctly
 export default function TopicPage({ params }: { params: { slug: string } }) {
