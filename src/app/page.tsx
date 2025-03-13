@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 'use client'
 import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
@@ -88,11 +88,11 @@ const Home: React.FC = () => {
               Known Potential
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Africa's Recognized Strengths
+              Africa&apos;s Recognized Strengths
             </h2>
             <div className="w-16 h-1 bg-blue-500 mx-auto mb-4"></div>
             <p className="max-w-2xl mx-auto text-gray-600">
-              The continent's well-documented capabilities and assets that are acknowledged globally,
+              The continent&apos;s well-documented capabilities and assets that are acknowledged globally,
               yet often underestimated and underutilized.
             </p>
           </motion.div>
@@ -140,7 +140,7 @@ const Home: React.FC = () => {
               Hidden Potential
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Africa's Undisclosed Treasures
+              Africa&apos;s Undisclosed Treasures
             </h2>
             <div className="w-16 h-1 bg-amber-500 mx-auto mb-4"></div>
             <p className="max-w-2xl mx-auto text-gray-600">
@@ -190,7 +190,7 @@ const Home: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Discover the True Africa</h2>
             <p className="max-w-2xl mx-auto mb-8">
               Beyond the stereotypes lies a continent of immense potential and opportunity.
-              Join us in uncovering Africa's true story.
+              Join us in uncovering Africa&apos;s true story.
             </p>
             <button className="px-8 py-3 bg-white text-amber-800 hover:bg-gray-100 font-medium rounded-full transition-colors duration-300">
               Start Exploring

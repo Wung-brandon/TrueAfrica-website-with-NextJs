@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 // Client Component for animations
 'use client';
 import { Topic } from "@/types";
