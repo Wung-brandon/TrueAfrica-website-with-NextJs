@@ -11,7 +11,11 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-8 md:mb-0">
-            <span className="text-2xl font-bold">True<span className="text-amber-400">Africa</span></span>
+            <Link href="/" className="flex items-center">
+              <span className="text-xl font-bold text-white tracking-tight">
+                True<span className="text-amber-300">Africa</span>
+              </span>
+            </Link>
             <p className="mt-2 text-gray-400 max-w-md">
               Uncovering Africa&apos;s known strengths and hidden potential, beyond the stereotypes and misconceptions.
             </p>
@@ -22,19 +26,22 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-4 text-amber-400">Explore</h3>
               <ul className="space-y-2">
                 <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
+                {/* <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li> */}
+                <li><Link href="/article" className="text-gray-400 hover:text-white transition-colors">Articles</Link></li>
                 <li><Link href="/#known" className="text-gray-400 hover:text-white transition-colors">Known Potential</Link></li>
                 <li><Link href="/#hidden" className="text-gray-400 hover:text-white transition-colors">Hidden Potential</Link></li>
               </ul>
             </div>
             
-            <div>
+            {/* <div>
               <h3 className="text-lg font-semibold mb-4 text-amber-400">Topics</h3>
               <ul className="space-y-2">
                 <li><Link href="/youngest-continent" className="text-gray-400 hover:text-white transition-colors">Youngest Continent</Link></li>
                 <li><Link href="/battery-world" className="text-gray-400 hover:text-white transition-colors">Battery of the World</Link></li>
                 <li><Link href="/fintech-trailblazer" className="text-gray-400 hover:text-white transition-colors">FinTech Trailblazer</Link></li>
               </ul>
-            </div>
+            </div> */}
             
             <div className="col-span-2 md:col-span-1">
               <h3 className="text-lg font-semibold mb-4 text-amber-400">Contact</h3>
@@ -49,7 +56,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500">© {currentYear} TrueAfrica. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
-            <ul className="flex space-x-6">
+            {/* <ul className="flex space-x-6">
               <li>
                 <a href="#" className="text-gray-400 hover:text-white">
                   <span className="sr-only">Facebook</span>
@@ -74,7 +81,7 @@ const Footer: React.FC = () => {
                   </svg>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>

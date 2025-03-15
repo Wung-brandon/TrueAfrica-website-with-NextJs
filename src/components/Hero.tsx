@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
             href="#known" 
             className="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-medium transition-colors duration-300"
           >
-            Explore More
+            Start Reading
           </Link>
         </motion.div>
       </div>

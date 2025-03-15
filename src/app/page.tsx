@@ -7,6 +7,7 @@ import { topics } from "@/data/topicsData";
 import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
 import SearchBar from "@/components/Searchbar";
+import { useRouter } from "next/navigation";
 // import { Topic } from "@/types";
 
 const ITEMS_PER_PAGE = 6;
@@ -23,6 +24,8 @@ const Home: React.FC = () => {
   // Filter topics by category
   const knownTopics = filteredTopics.filter(topic => topic.category === 'known');
   const hiddenTopics = filteredTopics.filter(topic => topic.category === 'hidden');
+
+  const router = useRouter()
 
   // Handle search
   useEffect(() => {
@@ -109,7 +112,8 @@ const Home: React.FC = () => {
                 <div className="mt-12 text-center">
                   <motion.button 
                     onClick={handleLoadMoreKnown}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300 font-medium"
+                    className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 
+                    transition-colors duration-300 font-medium cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -161,7 +165,8 @@ const Home: React.FC = () => {
                 <div className="mt-12 text-center">
                   <motion.button 
                     onClick={handleLoadMoreHidden}
-                    className="px-6 py-3 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition-colors duration-300 font-medium"
+                    className="px-6 py-3 bg-amber-600 text-white rounded-full hover:bg-amber-700 
+                    transition-colors duration-300 font-medium cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -192,8 +197,11 @@ const Home: React.FC = () => {
               Beyond the stereotypes lies a continent of immense potential and opportunity.
               Join us in uncovering Africa&apos;s true story.
             </p>
-            <button className="px-8 py-3 bg-white text-amber-800 hover:bg-gray-100 font-medium rounded-full transition-colors duration-300">
-              Start Exploring
+            <button className="px-8 py-3 bg-white text-amber-800 hover:bg-gray-100 font-medium 
+              rounded-full transition-colors duration-300 cursor-pointer"
+              onClick={()=> router.push('/article')}
+            >
+              View Complete Article
             </button>
           </motion.div>
         </div>
