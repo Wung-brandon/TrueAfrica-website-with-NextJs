@@ -12,7 +12,6 @@ import {
   diseaseBurden,
   foodInsecurity,
   ethnic,
-  ageingLeadership,
   rhythmicHub,
   politicalInstability,
   globalEnergy,

@@ -33,15 +33,6 @@ const Footer: React.FC = () => {
               </ul>
             </div>
             
-            {/* <div>
-              <h3 className="text-lg font-semibold mb-4 text-amber-400">Topics</h3>
-              <ul className="space-y-2">
-                <li><Link href="/youngest-continent" className="text-gray-400 hover:text-white transition-colors">Youngest Continent</Link></li>
-                <li><Link href="/battery-world" className="text-gray-400 hover:text-white transition-colors">Battery of the World</Link></li>
-                <li><Link href="/fintech-trailblazer" className="text-gray-400 hover:text-white transition-colors">FinTech Trailblazer</Link></li>
-              </ul>
-            </div> */}
-            
             <div className="col-span-2 md:col-span-1">
               <h3 className="text-lg font-semibold mb-4 text-amber-400">Contact</h3>
               <ul className="space-y-2">

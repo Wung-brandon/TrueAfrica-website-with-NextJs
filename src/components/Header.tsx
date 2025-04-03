@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import africaMap from "@/assets/18083310.jpg"
+
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
