@@ -5,28 +5,37 @@ import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
-// Generate static paths
-export function generateStaticParams() {
-  // Only include topics with valid slugs
-  return topics
-    .filter(topic => !!topic.slug)
-    .map(topic => ({ 
-      slug: topic.slug 
-    }));
+
+// Generate metadata function with correct typing
+export async function generateMetadata({ 
+  params 
+}: {params: Promise<{ slug: string }>}) {
+  const slug = (await params).slug
+  const topic = getTopicBySlug(slug);
+  if (!topic) {
+    return { title: 'Topic Not Found', description: 'The requested topic could not be found.' };
+  }
+  return { title: topic.title, description: topic.shortDescription };
 }
 
-// Main page component
-export default function TopicPage({ 
-  params,
-}: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const { slug } = params;
+
+// Generate static paths with correct return type
+export function generateStaticParams(): { slug: string }[] {
+  return topics.map(topic => ({ 
+    slug: topic.slug 
+  }));
+}
+
+// Main page component with correct params typing
+export default async function TopicPage({ 
+  params 
+}: {params: Promise<{ slug: string }>}) {
+  const slug = (await params).slug
   const topic = getTopicBySlug(slug);
 
   if (!topic) {
     notFound();
+    return null;
   }
 
   const { prevTopic, nextTopic } = getNextPrevTopics(topic.id);
@@ -37,26 +46,4 @@ export default function TopicPage({
       <NextPrevNavigation prevTopic={prevTopic} nextTopic={nextTopic} />
     </Layout>
   );
-}
-
-// Generate metadata
-export function generateMetadata({ 
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
-  const topic = getTopicBySlug(slug);
-  
-  if (!topic) {
-    return { 
-      title: 'Topic Not Found', 
-      description: 'The requested topic could not be found.' 
-    };
-  }
-  
-  return { 
-    title: topic.title, 
-    description: topic.shortDescription 
-  };
 }
