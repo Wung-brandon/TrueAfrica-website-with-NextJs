@@ -8,8 +8,9 @@ import AnimatedContent from '@/components/AnimatedContent';
 // Generate metadata function with correct typing
 export async function generateMetadata({ 
   params 
-}: {params: { slug: string }}) {
-  const slug = params.slug;
+}: {params: Promise<{ slug: string }> | { slug: string }}) {
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const slug = resolvedParams.slug;
   const topic = getTopicBySlug(slug);
   if (!topic) {
     return { title: 'Topic Not Found', description: 'The requested topic could not be found.' };
@@ -19,19 +20,22 @@ export async function generateMetadata({
 
 // Generate static paths with correct return type
 export function generateStaticParams(): { slug: string }[] {
-  // Use a type assertion to tell TypeScript that we're confident the result will match the expected type
+  // Filter out any topics that don't have a slug
   return topics
-    .filter(topic => topic.slug) // Filter out any topics with undefined or empty slugs
+    .filter((topic): topic is { slug: string; id: number; /* other properties */ } => 
+      typeof topic.slug === 'string' && topic.slug.length > 0
+    )
     .map(topic => ({ 
       slug: topic.slug 
-    })) as { slug: string }[]; // Type assertion here
+    }));
 }
 
 // Main page component with correct params typing
-export default function TopicPage({ 
+export default async function TopicPage({ 
   params 
-}: {params: { slug: string }}) {
-  const slug = params.slug;
+}: {params: Promise<{ slug: string }> | { slug: string }}) {
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const slug = resolvedParams.slug;
   const topic = getTopicBySlug(slug);
 
   if (!topic) {
