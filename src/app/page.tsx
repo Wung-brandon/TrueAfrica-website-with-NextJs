@@ -91,7 +91,7 @@ const Home: React.FC = () => {
               Known Potential
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Africa&apos;s Recognized Strengths
+              Africa&apos;s Recognized Potentials
             </h2>
             <div className="w-16 h-1 bg-blue-500 mx-auto mb-4"></div>
             <p className="max-w-2xl mx-auto text-gray-600">
@@ -144,7 +144,7 @@ const Home: React.FC = () => {
               Hidden Potential
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Africa&apos;s Undisclosed Treasures
+              Africa&apos;s Undisclosed Potentials
             </h2>
             <div className="w-16 h-1 bg-amber-500 mx-auto mb-4"></div>
             <p className="max-w-2xl mx-auto text-gray-600">

@@ -1,9 +1,7 @@
-
-// Client Component for animations
 'use client';
 import { Topic } from "@/types";
 import { motion } from 'framer-motion';
-import Image from "next/image"
+import Image from "next/image";
 
 function AnimatedContent({ topic }: { topic: Topic }) {
   return (
@@ -80,51 +78,115 @@ function AnimatedContent({ topic }: { topic: Topic }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-lg md:text-xl leading-relaxed text-gray-700">
+              <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-8">
                 {topic.fullDescription}
               </p>
               
-              {/* <div className="mt-8 p-4 md:p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">Key Insights</h3>
-                <ul className="space-y-3">
-                  {topic.category === 'known' ? (
-                    <>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2">•</span>
-                        <span>Africa has untapped potential that can be leveraged for global impact.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2">•</span>
-                        <span>Strategic investments in key sectors can accelerate continental growth.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-blue-500 mr-2">•</span>
-                        <span>Collaboration between public and private sectors is essential for sustainable development.</span>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li className="flex items-start">
-                        <span className="text-amber-500 mr-2">•</span>
-                        <span>Africa's overlooked assets represent significant opportunities for innovation.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-amber-500 mr-2">•</span>
-                        <span>Increased awareness of these hidden potentials can attract more investments.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-amber-500 mr-2">•</span>
-                        <span>Local solutions to continental challenges are emerging from these untapped resources.</span>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div> */}
+              {/* Key Facts/Highlights Section */}
+              {renderDetailsSection(topic)}
             </motion.div>
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+// Helper function to render appropriate details based on topic structure
+function renderDetailsSection(topic: Topic) {
+  const details = topic.details;
+  if (!details) return null;
+  
+  return (
+    <div className="mt-12">
+      
+      {renderListSection(
+        details.highlights || details.keyFacts || details.keyHighlights, 
+        "Key Facts & Highlights", 
+        "bg-blue-50"
+      )}
+
+      {renderListSection(
+        details.implications || details.impact || details.keyConsiderations, 
+        "Implications & Considerations", 
+        "bg-gray-50"
+      )}
+
+      {renderListSection(
+        details.businessOpportunities || details.strategicBusinessOpportunities, 
+        "Business Opportunities", 
+        "bg-green-50"
+      )}
+
+
+      {renderListSection(
+        details.callToAction || details.actionPoints, 
+        "Call to Action", 
+        "bg-amber-50"
+      )}
+
+
+      {renderListSection(
+        details.significantAdvances, 
+        "Significant Advances", 
+        "bg-purple-50"
+      )}
+
+      {renderListSection(
+        details.criticalPathways, 
+        "Critical Pathways", 
+        "bg-indigo-50"
+      )}
+
+      {renderListSection(
+        details.navigatingThePolycrisis, 
+        "Navigating the Polycrisis", 
+        "bg-teal-50"
+      )}
+
+      {renderListSection(
+        details.strategicImportance, 
+        "Strategic Importance", 
+        "bg-cyan-50"
+      )}
+
+      {renderListSection(
+        details.pathwaysOut, 
+        "Pathways Out", 
+        "bg-red-50"
+      )}
+
+    </div>
+  );
+}
+
+// Helper function to render a list section with a title
+function renderListSection(items: string[] | undefined, title: string, bgColor: string) {
+  if (!items || items.length === 0) return null;
+  
+  return (
+    <motion.div 
+      className={`p-6 rounded-lg mb-8 ${bgColor}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h3 className="text-xl font-bold mb-4">{title}</h3>
+      <ul className="space-y-3">
+        {items.map((item, index) => (
+          <motion.li 
+            key={index}
+            className="flex items-start"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 * index }}
+          >
+            <span className="text-blue-600 font-bold mr-2">•</span>
+            <span>{item}</span>
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
   );
 }
 

@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import africaMap from "@/assets/18083310.jpg"
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -120,6 +122,14 @@ const Header: React.FC = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 py-4 md:py-3 flex justify-between items-center">
+      {/* <Image 
+          src={africaMap} 
+          alt="Africa" 
+          className="object-cover w-50" // Maintain aspect ratio
+          priority // Load the image with high priority
+        /> */}
+
+        
         <Link href="/" className="flex items-center z-20" onClick={closeMenu}>
           <span className="text-xl font-bold text-white tracking-tight">
             True<span className="text-amber-300">Africa</span>

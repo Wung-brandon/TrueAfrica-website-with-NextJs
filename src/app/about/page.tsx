@@ -3,7 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
-import { foodInsecurity } from '@/utils/images';
+import { authorImg } from '@/utils/images';
+import Link from 'next/link';
 
 const AboutPage: React.FC = () => {
   // Animation variants
@@ -28,7 +29,7 @@ const AboutPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            About Author
+            About Myself
           </motion.h1>
           
           <motion.div 
@@ -44,7 +45,7 @@ const AboutPage: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Author, Researcher, and African Development Expert
+            Africa Enabler, African Diaspora Scholar, Professor of Development Economics
           </motion.p>
         </div>
       </section>
@@ -64,8 +65,8 @@ const AboutPage: React.FC = () => {
             <div className="w-full lg:w-2/5">
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
                 <Image 
-                  src={foodInsecurity}
-                  alt="Amara Okonkwo" 
+                  src={authorImg}
+                  alt="Ransom Lekunze" 
                   layout="fill"
                   className="object-cover"
                 />
@@ -75,26 +76,44 @@ const AboutPage: React.FC = () => {
             
             {/* Text */}
             <div className="w-full lg:w-3/5">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">My Story</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">Ransom Lekunze (PhD)</h2>
               <div className="w-16 h-1 bg-amber-500 mb-8"></div>
+              
               <p className="text-lg text-gray-700 mb-6">
-                With over 15 years of experience in African development initiatives, I founded TrueAfrica in 2020 to challenge prevailing stereotypes and highlight the continent&apos;s true potential. My journey began after witnessing the consistent misrepresentation of African stories in global media.
+                Africa Enabler, African Diaspora Scholar, Professor of Development Economics at DIS Denmark, and a Consultant at Prominds Consulting.
               </p>
-              <p className="text-lg text-gray-700 mb-6">
-                Born and raised in Lagos, Nigeria, I completed my education at the University of Cape Town and later at Oxford University, where I specialized in Development Economics. My research has taken me to over 30 African countries, documenting untold stories of innovation, resilience, and growth.
-              </p>
-              <p className="text-lg text-gray-700 mb-6">
-                Before founding TrueAfrica, I worked as a development consultant for international organizations and authored two books on African economics and social innovation. My work has been featured in leading publications including The Economist, Financial Times, and various academic journals.
-              </p>
-              <p className="text-lg text-gray-700">
-                Through TrueAfrica, I aim to bridge the gap between perception and reality, highlighting both the continent&apos;s achievements and its potential through rigorous research and authentic storytelling.
-              </p>
+              
+              <div className="mt-10">
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Connect With Me</h3>
+                
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <span className="text-amber-600 font-medium mr-2">Social Media:</span>
+                    <div className="flex flex-col">
+                      <Link href="https://x.com/RLTrueAfrica" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Twitter/X: @RLTrueAfrica</Link>
+                      <Link href="https://www.facebook.com/profile.php?id=61574483563524" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Facebook</Link>
+                      <Link href="https://www.instagram.com/rltrueafrica/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Instagram: @rltrueafrica</Link>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <span className="text-amber-600 font-medium mr-2">Email:</span>
+                    <Link href="mailto:ransomlek@yahoo.com" className="text-blue-600 hover:underline">ransomlek@yahoo.com</Link>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <span className="text-amber-600 font-medium mr-2">Tel:</span>
+                    <div>
+                      <p>+46 739 397 478 or +45 9146 1372</p> 
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
-
-      
     </Layout>
   );
 };

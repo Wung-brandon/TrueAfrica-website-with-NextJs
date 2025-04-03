@@ -23,8 +23,10 @@ import globalInfluence from '@/assets/global-influence.jpg'
 import preachingHub from '@/assets/preaching.jpg'
 import breadbasket from '@/assets/breadbasket.jpg'
 import increasedPresence from '@/assets/presence.jpg'
+import authorImg from '@/assets/authoImg.jpeg'
 
 export {
+    authorImg,
     wildlife,
     poverty,
     economies,

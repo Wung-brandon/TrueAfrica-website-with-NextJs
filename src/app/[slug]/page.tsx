@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import NextPrevNavigation from '@/components/NextPrevNavigation';
-import { getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
+import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
@@ -19,11 +19,11 @@ export async function generateMetadata({
 }
 
 // Generate static paths with correct return type
-// export function generateStaticParams(): { slug: string }[] {
-//   return topics.map(topic => ({ 
-//     slug: topic.slug 
-//   }));
-// }
+export function generateStaticParams(): { slug: string }[] {
+  return topics.map(topic => ({ 
+    slug: topic.slug 
+  }));
+}
 
 // Main page component with correct params typing
 export default async function TopicPage({ 
