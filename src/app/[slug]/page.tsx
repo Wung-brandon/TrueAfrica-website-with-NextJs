@@ -5,27 +5,33 @@ import { topics, getTopicBySlug, getNextPrevTopics } from '@/data/topicsData';
 import { notFound } from 'next/navigation';
 import AnimatedContent from '@/components/AnimatedContent';
 
-// Type for generateStaticParams return value
-type StaticParam = { slug: string };
+// Generate metadata function with correct typing
+export async function generateMetadata({ 
+  params 
+}: {params: { slug: string }}) {
+  const slug = params.slug;
+  const topic = getTopicBySlug(slug);
+  if (!topic) {
+    return { title: 'Topic Not Found', description: 'The requested topic could not be found.' };
+  }
+  return { title: topic.title, description: topic.shortDescription };
+}
 
 // Generate static paths with correct return type
-export function generateStaticParams(): StaticParam[] {
-  // Ensure we only return topics with valid slugs
+export function generateStaticParams(): { slug: string }[] {
+  // Filter out any topics that might have undefined slugs
   return topics
-    .filter(topic => topic.slug && typeof topic.slug === 'string')
-    .map(topic => ({
-      slug: topic.slug
+    .filter(topic => typeof topic.slug === 'string')
+    .map(topic => ({ 
+      slug: topic.slug 
     }));
 }
 
-// Properly type the page component using Next.js's expected format
-type Props = {
-  params: { slug: string };
-  searchParams: Record<string, string | string[] | undefined>;
-};
-
-export default function TopicPage({ params, searchParams }: Props) {
-  const { slug } = params;
+// Main page component with correct params typing
+export default function TopicPage({ 
+  params 
+}: {params: { slug: string }}) {
+  const slug = params.slug;
   const topic = getTopicBySlug(slug);
 
   if (!topic) {
@@ -41,16 +47,4 @@ export default function TopicPage({ params, searchParams }: Props) {
       <NextPrevNavigation prevTopic={prevTopic} nextTopic={nextTopic} />
     </Layout>
   );
-}
-
-// Add metadata function with the same typing pattern
-export function generateMetadata({ params }: Props) {
-  const { slug } = params;
-  const topic = getTopicBySlug(slug);
-  
-  if (!topic) {
-    return { title: 'Topic Not Found', description: 'The requested topic could not be found.' };
-  }
-  
-  return { title: topic.title, description: topic.shortDescription };
 }
